@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Grocery Store Inventory App</title>
+ 
+    
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/signup.css" rel="stylesheet">
+    
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+ 
+       <div style="display:flex; justify-content:center; width:100%; text-align:center;">
+
+        <div class="jumbotron">
+          <h1>Grocery Store</h1>
+          <form action="/add_inventory" method="POST">
+          <label for="inventoryItem" class="sr-only">Item</label>
+          <input type="text" name="item" placeholder="Item" required autofocus>
+
+          <label for="itemCategory" class="sr-only">Category</label>
+          <input type="text" name="category" placeholder="Category" required autofocus>
+
+          <label for="itemQuantity" class="sr-only">Quantity</label>
+          <input type="text" name="quantity" placeholder="Quantity" required>
+           
+          <label for="itemPrice" class="sr-only">Price</label>
+          <input type="text" name="price" placeholder="Item price" required><br><br>
+
+          <button id="btnAddItem" class="btn btn-lg btn-primary btn-block" type="submit">Add Item</button>
+        </form>
+        </div>
+      </div>
+
+      <div style="display:static; justify-content:center; width:100%; text-align:center;">
+        <div class='jumbotron'>
+          <form action="/see_list" method="GET">
+            <button id="btnSeeInventory" class="btn btn-lg btn-primary btn-block" type="submit">See Inventory</button>
+        </div>
+
+        <div>
+        {% for row in results %}
+              <tr>
+                 <td>{{ row[0] }}</td>
+                 <td>{{ row[1] }}</td>
+                 <td>{{ row[2] }}</td>
+                 <td>{{ row[3] }}</td>
+              </tr>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Grocery Store Inventory App</title>
+ 
+    
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/signup.css" rel="stylesheet">
+    
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+
+      <div style="display:static; justify-content:center; width:100%; text-align:center;">
+          <table border="1" cellpadding="5" cellspacing="5">
+
+            {% for row in results %}
+                  <tr>
+                     <td>{{ row[0] }}</td>
+                     <td>{{ row[1] }}</td>
+                     <td>{{ row[2] }}</td>
+                     <td>{{ row[3] }}</td>
+                  </tr>
+            {% endfor %}
+          </table>
+      </div>
+    </div>
+  </body>
+</html>
