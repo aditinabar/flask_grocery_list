@@ -25,15 +25,13 @@ def addItem():
 
         cursor.execute(f"INSERT INTO storeInventory (name, category, quantity, price)\
                          VALUES ('{item}', '{cat}', '{num}', '{price}')")
-        connection.commit()
+        # connection.commit()
 
     except Exception as e:
         print(f"Could not write to database because of error: {e}")
         raise
-    else:
-        print("Data entered into database")
 
-    return
+    return f"Item {item} written to Inventory list"
 
 
 @app.route("/see_list", methods=['GET'])
@@ -46,6 +44,22 @@ def getInventory():
         print(f"Could not read inventory from database because of error: {e}")
 
     return render_template('inventory_list.html', results=data)
+
+
+
+def check_duplicates(item):
+    try:
+        sql = "SELECT DISTINCT name FROM storeInventory"
+        cursor.execute(sql)
+        data = cursor.fetchall()
+
+        if item in list(data):
+            pass
+
+    except Exception as e:
+        print(f'Exception is {e}')
+    return "something"
+
 
 
 @app.route('/')
